@@ -6,6 +6,12 @@ public class Pizza {
     private Boolean isVeg;
     private String bill;
 
+    private boolean extracheese = false;
+
+    private boolean extratoppings = false;
+
+    private boolean takeaway = false;
+
     private int calculatedbill = 0;
 
     private int VegPizzaBasePrice = 300;
@@ -35,26 +41,62 @@ public class Pizza {
     }
 
     public void addExtraCheese(){
-        this.calculatedbill += ExtraCheesePrice;
+        if(!extracheese){
+            extracheese = true;
+            this.calculatedbill += ExtraCheesePrice;
+        }
+
 
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(this.isVeg)
-            this.calculatedbill += this.ExtraToppingsForVegPizza;
-        else
-            this.calculatedbill += this.ExtraToppingsForNonvegPizza;
+        if(!extratoppings){
+            extratoppings = true;
+            if(this.isVeg)
+                this.calculatedbill += this.ExtraToppingsForVegPizza;
+            else
+                this.calculatedbill += this.ExtraToppingsForNonvegPizza;
+        }
+
     }
 
     public void addTakeaway(){
         // your code goes here
-        this.calculatedbill += this.PaperBagPrice;
+        if(!takeaway){
+            takeaway = true;
+            this.calculatedbill += this.PaperBagPrice;
+        }
+
     }
 
     public String getBill(){
         // your code goes here
-        this.bill = String.valueOf(this.calculatedbill);
+//        Base Price Of The Pizza: 300
+//        Extra Cheese Added: 80
+//        Extra Toppings Added: 70
+//        Paperbag Added: 20
+//        Total Price: 470
+        String answer = "";
+        answer += "Base Price Of The Pizza: " + String.valueOf(this.price) + "\n";
+
+        if(this.extracheese)
+            answer += "Extra Cheese Added: 80" + "\n";
+
+        if(this.extratoppings){
+            if(this.isVeg)
+                answer += "Extra Toppings Added: 70" + "\n";
+            else
+                answer += "Extra Toppings Added: 120" + "\n";
+        }
+
+        if(this.takeaway)
+            answer += "Paperbag Added: 20" + "\n";
+
+        answer += "Total Price: " + this.calculatedbill + "\n";
+
+        this.bill = answer;
+
         return this.bill;
     }
 }
