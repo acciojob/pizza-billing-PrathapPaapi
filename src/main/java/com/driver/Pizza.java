@@ -26,7 +26,8 @@ public class Pizza {
     }
 
     public void Deluxe(boolean isDeluxe){
-        this.calculatedbill += 120;
+        this.calculatedbill += 150;
+        this.price += 150;
     }
 
     public int getPrice(){
