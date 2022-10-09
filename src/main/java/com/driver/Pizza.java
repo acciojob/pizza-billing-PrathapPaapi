@@ -5,15 +5,10 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
-
     private boolean extracheese = false;
-
     private boolean extratoppings = false;
-
     private boolean takeaway = false;
-
     private int calculatedbill = 0;
-
     private int VegPizzaBasePrice = 300;
     private int NonVegPizzaBasePrice = 400;
     private int ExtraCheesePrice = 80;
